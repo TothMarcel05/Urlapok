@@ -1,12 +1,17 @@
 // /^[a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ ]+$/
-
+let nevKiiratasa = document.getElementById("nevEredmeny");
 function ellenorAlap()
 {
     let nev = document.forms["alapUrlap"]["nev"].value;
     console.log(nev);
 
     if(nev.trim() === ""){
-        alert("A név mező nem lehet üres!");
+        //alert("A név mező nem lehet üres!");
+        if(nevKiiratasa)
+        {
+            nevKiiratasa.innerText = "A név mező nem lehet üres!";
+            nevKiiratasa.classList.add("hiba");
+        }
         return false;
     }
     
@@ -16,7 +21,8 @@ function ellenorAlap()
         return false;
     }
 
-    let nevKiiratasa = document.getElementById("nevEredmeny");
+
     nevKiiratasa.innerText = "Helyes név: " + nev;
+    nevKiiratasa.classList.remove("hiba");
     return false;
 }
